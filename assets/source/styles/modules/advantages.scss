@@ -1,0 +1,24 @@
+.advantages {
+  background: url(../img/bg2.jpg) no-repeat;
+  background-size: cover;
+  padding: 60px 0;
+  .container {
+    h2 {
+      text-align: center;
+    }
+  }
+  &__wrap {
+    @include flex-alignment();
+    flex-wrap: wrap;
+  }
+  &__item {
+    text-align: center;
+    width: 29%;
+    margin-bottom: 60px;
+    img {
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 50px;
+    }
+  }
+}

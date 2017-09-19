@@ -1,0 +1,16 @@
+.clients {
+  padding: 60px 0 30px;
+  .container {
+    h2 {
+      color: $black;
+    }
+  }
+  &__wrap {
+    @include flex-alignment();
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    a {
+      margin-bottom: 30px;
+    }
+  }
+}

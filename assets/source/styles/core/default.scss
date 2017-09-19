@@ -1,0 +1,73 @@
+/* Дефолтные стили */
+@font-face {
+  font-family: 'SFUIText';
+  src: url("../fonts/SFUIText-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'SFUIText-Light';
+  src: url("../fonts/SFUIText-Light.otf") format("opentype");
+}
+
+body {
+  font-family: 'SFUIText', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-size-adjust: none;
+}
+
+/* Формы */
+input, textarea, button {
+  outline: none;
+}
+
+/* Аккуратные таблицы */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Основные стили */
+html {
+  background: rgba(255, 255, 255, 1);
+}
+
+h1 {
+  font-size: 60px;
+  color: $white;
+  line-height: 63px;
+  font-family: 'SFUIText-Light';
+  margin-bottom: 15px;
+}
+
+h2 {
+  font-size: 29px;
+  color: $white;
+  text-align: center;
+  font-family: 'SFUIText-Light';
+  margin-bottom: 40px;
+}
+
+p {
+  font-size: 18px;
+  color: $white;
+}
+
+/* Ссылки без дефолтного подчёркивания */
+a {
+  text-decoration: none;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+@mixin flex-alignment() {
+  display: flex;
+  justify-content: space-between;
+}

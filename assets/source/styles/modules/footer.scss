@@ -1,0 +1,32 @@
+.footer {
+  background-color: $black;
+  color: $white;
+  padding: 28px 0 46px;
+  .container {
+    @include flex-alignment();
+  }
+  &__about {
+    width: 245px;
+    font-size: 12px;
+  }
+  &__info {
+    font-size: 12px;
+    margin: 25px 0 15px;
+  }
+  &__menu {
+    li {
+      list-style: none;
+      text-align: right;
+      &:not(last-child) {
+        margin-bottom: 10px;
+      }
+      a {
+        color: $white;
+        font-size: 18px;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

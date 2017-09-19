@@ -1,0 +1,28 @@
+.header {
+  padding: 13px 0;
+  background-color: $black;
+  .container {
+    @include flex-alignment();
+    align-items: center;
+  }
+  &__contacts {
+    @include flex-alignment();
+    align-items: center;
+    width: 420px;
+  }
+  &__phone {
+    font-size: 18px;
+    color: $white;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &__email {
+    @extend .header__phone;
+  }
+  &__search {
+    background-color: $blue;
+    padding: 8px 11px;
+    border-radius: 50%;
+  }
+}
