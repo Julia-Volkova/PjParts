@@ -39,7 +39,11 @@
     position: absolute;
     right: 0;
     bottom: -40px;
-    display: none;
+    opacity: 0;
+    transition: .5s;
+    @media(max-width: 395px) {
+      right: -35px;
+    }
     &:after {
       content: '';
       width: 20px;
@@ -52,7 +56,7 @@
       top: 5px;
     }
     &.visible {
-      display: block;
+     opacity: 1;
     }
   }
   &__search {
