@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-    <link href="assets/css/style.css?v=64861d8ec600ffc135add156e975ba38" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.11.1/validate.min.js"></script>
+    <link href="assets/css/style.css?v=172b49062c99757a8b16595bbb282db5" rel="stylesheet">
 </head>
 <body>
 
@@ -18,7 +19,10 @@
         <div class="header__contacts">
             <a class="header__phone" href="tel:+79267360018">+7 (926) 736-00-18</a>
             <a class="header__email" href="mailto:info@pjparts.ru">info@pjparts.ru</a>
-            <a class="header__search" href=""><img src="assets/img/search.svg" alt=""></a>
+            <button class="btn btn-search js-btn-search"><img src="assets/img/search.svg" alt=""></button>
+            <div class="header__search-wrap js-input-search">
+                <input class="header__search" type="text">
+            </div>
         </div>
     </div>
 </div>    <div class="intro">
@@ -33,10 +37,10 @@
         <div class="intro__form">
             <h2>Оставить заявку:</h2>
             <form action="">
-                <input type="text" placeholder="Ваше имя">
-                <input type="text" placeholder="E-mail">
-                <input type="text" placeholder="Телефон">
-                <button class="btn" type="submit">Отправить</button>
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" class="email-input js-email" placeholder="E-mail">
+                <input type="tel" maxlength="12" class="js-phone" placeholder="8 (915) 555-55-55" pattern="/^((\+7|7|8)+([0-9]){10})$/gm" required>
+                <button class="btn btn-send js-submit" type="submit" disabled>Отправить</button>
             </form>
         </div>
     </div>
@@ -119,6 +123,6 @@
     </div>
 </div></div>
 
-<script src="assets/js/scripts.js?v=b36a21eeb392ace1bce2fa123e925903"></script>
+<script src="assets/js/scripts.js?v=c57f2a44577260dd5f00d1670ae7dfb7"></script>
 </body>
 </html>

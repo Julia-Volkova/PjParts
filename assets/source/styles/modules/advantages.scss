@@ -2,7 +2,16 @@
   background: url(../img/bg2.jpg) no-repeat;
   background-size: cover;
   padding: 60px 0;
+  @media(max-width: 420px) {
+    padding: 30px 0 0;
+  }
   .container {
+    @media(max-width: 1024px) {
+      width: 80%;
+    }
+    @media(max-width: 800px) {
+      width: 90%;
+    }
     h2 {
       text-align: center;
     }
@@ -10,10 +19,13 @@
   &__wrap {
     @include flex-alignment();
     flex-wrap: wrap;
+    @media(max-width: 666px) {
+      justify-content: center;
+    }
   }
   &__item {
     text-align: center;
-    width: 29%;
+    width: 300px;
     margin-bottom: 60px;
     img {
       display: block;

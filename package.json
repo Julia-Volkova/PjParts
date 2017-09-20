@@ -69,6 +69,7 @@
     "gulp-webpack": "^1.5.0",
     "streamify": "^0.2.9",
     "uglify": "^0.1.5",
+    "validate.js": "^0.11.1",
     "vinyl-source-stream": "^1.1.0"
   }
 }

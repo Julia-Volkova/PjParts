@@ -4,19 +4,32 @@
   padding: 28px 0 46px;
   .container {
     @include flex-alignment();
+    @media(max-width: 620px) {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
   }
   &__about {
     width: 245px;
     font-size: 12px;
+    @media(max-width: 620px) {
+      text-align: center;
+    }
   }
   &__info {
     font-size: 12px;
     margin: 25px 0 15px;
   }
   &__menu {
+    @media(max-width: 620px) {
+      margin-bottom: 18px;
+    }
     li {
       list-style: none;
       text-align: right;
+      @media(max-width: 620px) {
+        text-align: center;
+      }
       &:not(last-child) {
         margin-bottom: 10px;
       }

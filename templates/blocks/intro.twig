@@ -10,10 +10,10 @@
         <div class="intro__form">
             <h2>Оставить заявку:</h2>
             <form action="">
-                <input type="text" placeholder="Ваше имя">
-                <input type="text" placeholder="E-mail">
-                <input type="text" placeholder="Телефон">
-                <button class="btn" type="submit">Отправить</button>
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" class="email-input js-email" placeholder="E-mail">
+                <input type="tel" maxlength="12" class="js-phone" placeholder="8 (915) 555-55-55" pattern="/^((\+7|7|8)+([0-9]){10})$/gm" required>
+                <button class="btn btn-send js-submit" type="submit" disabled>Отправить</button>
             </form>
         </div>
     </div>

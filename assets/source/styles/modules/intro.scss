@@ -1,21 +1,45 @@
 .intro {
-  background:  linear-gradient(
+  background: linear-gradient(
                   rgba(0, 0, 0, .65),
                   rgba(0, 0, 0, .65)
   ), url(../img/bg1.jpg) no-repeat;
   background-size: cover;
   padding: 58px 0 106px;
+  @media(max-width: 930px) {
+    padding: 58px 0 86px;
+  }
+  @media(max-width: 420px) {
+    padding: 38px 0 66px !important; //выяснить, почему не переопределяется
+  }
   .container {
     @include flex-alignment();
+    @media(max-width: 930px) {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
   }
   &__info {
     width: 55%;
     margin-right: 5%;
+    @media(max-width: 930px) {
+      width: 430px;
+      margin-bottom: 40px;
+      margin-right: 0;
+    }
+    @media(max-width: 455px) {
+      width: 95%;
+    }
     p {
       line-height: 29px;
+      @media(max-width: 420px) {
+        line-height: 27px;
+      }
     }
   }
   &__form {
+    @media(max-width: 455px) {
+      width: 95%;
+    }
     h2 {
       margin-bottom: 24px;
     }

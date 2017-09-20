@@ -1,5 +1,8 @@
 .contacts {
   padding: 60px 0 48px;
+  @media(max-width: 420px) {
+    padding: 30px 0 28px;
+  }
   .container {
     h2, p, span, a {
       color: $black;
