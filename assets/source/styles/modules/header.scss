@@ -35,37 +35,26 @@
   &__email {
     @extend .header__phone;
   }
-  &__search-wrap {
+  &__search {
     position: absolute;
     right: 0;
-    bottom: -40px;
-    opacity: 0;
+    bottom: 0;
     transition: .5s;
-    @media(max-width: 395px) {
-      right: -35px;
-    }
-    &:after {
-      content: '';
-      width: 20px;
-      height: 20px;
-      background-image: url(../img/search.svg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: absolute;
-      right: 5px;
-      top: 5px;
-    }
-    &.visible {
-     opacity: 1;
-    }
-  }
-  &__search {
+    z-index: 1;
+    width: 0;
     height: 30px;
-    width: 270px;
     font-size: 16px;
     background-color: #2E70A7;
     border: none;
-    padding: 0 30px 0 10px;
+    padding: 0 30px 0 0;
     color: $white;
+    border-radius: 20px;
+    &.visible {
+      width: 430px;
+      padding: 0 30px 0 20px;
+      @media(max-width: 545px) {
+        width: 245px;
+      }
+    }
   }
 }

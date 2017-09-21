@@ -18,11 +18,14 @@ function init() {
 
     myPlacemark = new ymaps.Placemark([55.785118, 37.659326],
         {
-            hintContent: 'Москва!',
-            balloonContent: 'Столица России'
+            hintContent: 'Верхняя Красносельская улица, 2/1'
         });
 
     myMap.geoObjects.add(myPlacemark);
+    // Cancel zoom on desktop
+    myMap.behaviors.disable('scrollZoom');
+    // Cancel zoom on mobile
+    myMap.behaviors.disable('drag');
 }
 
 //Form validation

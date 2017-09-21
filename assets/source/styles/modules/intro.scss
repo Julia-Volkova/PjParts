@@ -9,7 +9,7 @@
     padding: 58px 0 86px;
   }
   @media(max-width: 420px) {
-    padding: 38px 0 66px !important; //выяснить, почему не переопределяется
+    padding: 18px 0 66px !important; //выяснить, почему не переопределяется
   }
   .container {
     @include flex-alignment();
@@ -27,12 +27,13 @@
       margin-right: 0;
     }
     @media(max-width: 455px) {
-      width: 95%;
+      width: 100% !important;
+      padding: 0 2%;
     }
     p {
       line-height: 29px;
       @media(max-width: 420px) {
-        line-height: 27px;
+        line-height: 23px;
       }
     }
   }
