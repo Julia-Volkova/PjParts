@@ -92,10 +92,9 @@ input_search.addEventListener('keypress', () => {
         xhr.send();
         xhr.onreadystatechange = function () {
             if (xhr.status != 200) {
-
-            } else {
                 notFound();
-                // success(data);
+            } else {
+                success(data);
             }
         };
     }
