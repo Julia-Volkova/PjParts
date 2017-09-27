@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/validate.js/0.11.1/validate.min.js"></script>
-    <link href="assets/css/style.css?v=43d25311416e45f74125f5e24321c99b" rel="stylesheet">
+    <link href="assets/css/style.css?v=596585167fed44940f66188d0a77fae8" rel="stylesheet">
 </head>
 <body>
 
@@ -17,10 +17,36 @@
             <img src="assets/img/logo.svg" alt="">
         </a>
         <div class="header__contacts">
-            <a class="header__phone" href="tel:+79267360018">+7 (926) 736-00-18</a>
+            <a class="header__phone" href="tel:+74993916031">+7 (499) 391-60-31</a>
             <a class="header__email" href="mailto:info@pjparts.ru">info@pjparts.ru</a>
             <button class="btn btn-search js-btn-search"><img src="assets/img/search.svg" alt=""></button>
-            <input class="header__search js-input-search" type="text">
+        </div>
+    </div>
+</div>
+
+<div class="modal js-modal">
+    <div class="modal__wrap">
+        <div class="modal__header">
+            <a href="" class="modal__logo">
+                <img src="assets/img/logo.svg" alt="">
+            </a>
+            <a href="" class="modal__close js-btn-close">
+                <span>Закрыть</span>
+                <img src="assets/img/close.svg" alt="">
+            </a>
+        </div>
+        <input class="modal__input js-input-search" placeholder="Начинайте вводить название детали" type="text">
+        <div class="modal__content-result">
+            
+            
+                
+                
+                
+            
+            
+            
+            
+            
         </div>
     </div>
 </div>    <div class="intro">
@@ -32,27 +58,31 @@
                 расходные материалы и запасные части для дизельных генераторов и двигателей
             </p>
         </div>
-        <div class="intro__form">
+        <div class="intro__form js-intro-form">
             <h2>Оставить заявку:</h2>
-            <form action="">
+            <form action="" class="js-form">
                 <input type="text" placeholder="Ваше имя" required>
                 <input type="email" class="email-input js-email" placeholder="E-mail">
-                <input type="tel" maxlength="12" class="js-phone" placeholder="8 (915) 555-55-55" pattern="/^((\+7|7|8)+([0-9]){10})$/gm" required>
+                <input type="tel" maxlength="12" class="js-phone" placeholder="8 (915) 555-55-55">
                 <button class="btn btn-send js-submit" type="submit" disabled>Отправить</button>
             </form>
+        </div>
+        <div class="intro__submit-form js-submit-form">
+            <h2>Спасибо!</h2>
+            <p>Мы свяжемся с вами в течении пары часов</p>
         </div>
     </div>
 </div>    <div class="clients">
     <div class="container">
         <h2>Мы обслуживаем:</h2>
         <div class="clients__wrap">
-            <a href="https://www.fgwilson.com/" target="_blank"><img src="assets/img/brand1.svg" alt="" class="clients__item"></a>
-            <a href="http://www.deere.ru/ru_RU/regional_home.page" target="_blank"><img src="assets/img/brand2.svg" alt="" class="clients__item"></a>
-            <a href="https://www.kubota-global.net/ru/" target="_blank"><img src="assets/img/brand3.svg" alt="" class="clients__item"></a>
-            <a href="http://www.sdmo-master.ru/" target="_blank"><img src="assets/img/brand4.svg" alt="" class="clients__item"></a>
-            <a href="http://www.cat.com/ru_RU.html" target="_blank"> <img src="assets/img/brand5.svg" alt="" class="clients__item"></a>
-            <a href="http://www.cummins.ru/" target="_blank"> <img src="assets/img/brand6.svg" alt="" class="clients__item"></a>
-            <a href="https://www.perkins.com/" target="_blank"> <img src="assets/img/brand7.svg" alt="" class="clients__item" ></a>
+            <img src="assets/img/brand1.svg" alt="" class="clients__item">
+            <img src="assets/img/brand2.svg" alt="" class="clients__item">
+            <img src="assets/img/brand3.svg" alt="" class="clients__item">
+            <img src="assets/img/brand4.svg" alt="" class="clients__item">
+            <img src="assets/img/brand5.svg" alt="" class="clients__item">
+            <img src="assets/img/brand6.svg" alt="" class="clients__item">
+            <img src="assets/img/brand7.svg" alt="" class="clients__item">
         </div>
     </div>
 </div>    <div class="advantages">
@@ -96,7 +126,7 @@
         <p class="contacts__address">Наш адрес: Россия, Москва, Верхняя Красносельская улица, 2/1. Ориентир - кафе
             "Советские времена".</p>
         <p class="contacts__details">Реквизиты: ОГРНИП: 317502700048886</p>
-        <span>Телефон: <a class="contacts__phone" href="tel:+79267360018">+7 (926) 736-00-18</a></span>
+        <span>Телефон: <a class="contacts__phone" href="tel:+74993916031">+7 (499) 391-60-31</a></span>
     </div>
 </div>    <div id="map">
     
@@ -121,6 +151,6 @@
     </div>
 </div></div>
 
-<script src="assets/js/scripts.js?v=170c36766914c83cc5220e9245a2f65c"></script>
+<script src="assets/js/scripts.js?v=e0dc7826731ae9eed5a2f2f1ce0a3069"></script>
 </body>
 </html>

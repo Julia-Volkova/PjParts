@@ -3,7 +3,14 @@ var email_input = document.querySelector('.js-email'),
     submit_input = document.querySelector('.js-submit'),
     phone_input = document.querySelector('.js-phone'),
     search_btn = document.querySelector('.js-btn-search'),
-    search_input = document.querySelector('.js-input-search');
+    close_modal_btn = document.querySelector('.js-btn-close'),
+    modal = document.querySelector('.js-modal'),
+    form = document.querySelector('.js-form'),
+    intro_form = document.querySelector('.js-intro-form'),
+    submit_form = document.querySelector('.js-submit-form'),
+    input_search = document.querySelector('.js-input-search'),
+    container_result = document.querySelector('.js-container-result'),
+    elements = [];
 
 // Yandex map
 ymaps.ready(init);
@@ -64,7 +71,73 @@ phone_input.addEventListener('keyup', () => {
     }
 });
 
+
+// Search
 search_btn.addEventListener('click', () => {
-   search_input.classList.toggle('visible');
+    modal.classList.add('visible');
+    modal.style.height = document.body.offsetHeight + 'px'; // можно удалить
 });
 
+close_modal_btn.addEventListener('click', e => {
+    e.preventDefault();
+    modal.classList.remove('visible');
+});
+
+input_search.addEventListener('keypress', () => {
+    var value = input_search.value;
+    if (value != null) {
+        console.log('отправляю запрос')
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'include/search.php', true);
+        xhr.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.status != 200) {
+
+            } else {
+                notFound();
+                // success(data);
+            }
+        };
+    }
+});
+
+function success(data) {
+    data.forEach(el => {
+        elements.push(el);
+    });
+    return showResultNumber(elements) + showListElement(elements);
+}
+
+function showResultNumber(data) {
+    return `<h2>Результаты (<span>${data.length}</span> шт):</h2>
+            <div class="modal__result js-container-result"></div>`;
+}
+
+function showListElement(data) {
+    data.forEach(item => {
+        container_result += renderElement(item);
+    });
+}
+
+function renderElement(el) {
+    return `<a href="">${el.name}</a>`;
+}
+
+function notFound() {
+    return `<h2>К сожалению, ничего не найдено</h2>
+            <p>Но Вы можете связаться с нами по телефону <a class="modal__phone" href="tel:+74993916031">+7 (499)
+                    391-60-31</a> или по почте <a class="modal__email" href="mailto:info@pjparts.ru">info@pjparts.ru</a>
+                и мы что-нибудь придумаем!</p>`;
+}
+
+form.addEventListener('submit', () => {
+    intro_form.classList.add('hide');
+    submit_form.classList.add('visible');
+});
+
+
+submit_input.addEventListener('click', (e) => {
+    e.preventDefault();
+    intro_form.classList.add('hide');
+    submit_form.classList.add('visible');
+});

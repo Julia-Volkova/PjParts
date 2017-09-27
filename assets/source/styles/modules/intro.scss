@@ -13,6 +13,7 @@
   }
   .container {
     @include flex-alignment();
+    align-items: center;
     @media(max-width: 930px) {
       flex-wrap: wrap;
       justify-content: center;
@@ -38,11 +39,23 @@
     }
   }
   &__form {
+    &.hide {
+      display: none;
+    }
     @media(max-width: 455px) {
       width: 95%;
     }
     h2 {
       margin-bottom: 24px;
+    }
+  }
+  &__submit-form {
+    display: none;
+    &.visible {
+      display: block;
+    }
+    h2 {
+      margin-bottom: 5px;
     }
   }
 }
