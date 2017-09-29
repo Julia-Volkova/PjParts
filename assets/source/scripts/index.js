@@ -129,14 +129,32 @@ function notFound() {
                 и мы что-нибудь придумаем!</p>`;
 }
 
-form.addEventListener('submit', () => {
-    intro_form.classList.add('hide');
-    submit_form.classList.add('visible');
-});
+// form.addEventListener('submit', () => {
+//     intro_form.classList.add('hide');
+//     submit_form.classList.add('visible');
+// });
 
 
-submit_input.addEventListener('click', (e) => {
+// submit_input.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     intro_form.classList.add('hide');
+//     submit_form.classList.add('visible');
+// });
+
+
+form.addEventListener('submit', (e) => {
     e.preventDefault();
-    intro_form.classList.add('hide');
-    submit_form.classList.add('visible');
+    var formData = new FormData(form);
+    var options = {
+        method: "POST",
+        credentials: "same-origin",
+        headers: {
+            "Content-Type": 'application/x-www-form-urlencoded',
+        },
+        body: "formData"
+    };
+    fetch('/', options).then((response) => {
+        intro_form.classList.add('hide');
+        submit_form.classList.add('visible');
+    }).catch(error => console.log(error));
 });
