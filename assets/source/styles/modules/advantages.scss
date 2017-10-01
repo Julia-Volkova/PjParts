@@ -20,6 +20,8 @@
     }
   }
   &__wrap {
+    max-width: 1152px;
+    margin: 0 auto;
     @include flex-alignment();
     flex-wrap: wrap;
     @media(max-width: 666px) {
@@ -40,6 +42,7 @@
       display: block;
       margin: 0 auto;
       margin-bottom: 50px;
+
       @media(max-width: 666px) {
         margin-bottom: 20px;
       }
