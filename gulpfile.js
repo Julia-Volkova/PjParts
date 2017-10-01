@@ -136,7 +136,7 @@ gulp.task('scripts', function () {
         }))
         .bundle()
         .pipe(source("scripts.js"))
-        .pipe(streamify(uglify()))
+       
         .pipe(gulp.dest(paths.js));
 });
 
