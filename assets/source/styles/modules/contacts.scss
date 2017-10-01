@@ -17,6 +17,8 @@
       font-size: 18px;
     }
     a {
+      white-space: nowrap;
+
       &:hover {
         text-decoration: underline;
       }
