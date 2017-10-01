@@ -96,7 +96,7 @@ input_search.addEventListener('keyup', () => {
   };
 
   if (value !== '') {
-    fetch('include/search.php', options)
+    fetch('include/search_post.php', options)
       .then(data => data.json())
       .then(data => {
         const length = data.length
@@ -144,36 +144,29 @@ function notFound() {
 }
 
 function clearResult() {
-
-  container.innerHTML = ' ';
+  container.innerHTML = '';
 }
-
-// form.addEventListener('submit', () => {
-//     intro_form.classList.add('hide');
-//     submit_form.classList.add('visible');
-// });
-
-
-// submit_input.addEventListener('click', (e) => {
-//     e.preventDefault();
-//     intro_form.classList.add('hide');
-//     submit_form.classList.add('visible');
-// });
 
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   var formData = new FormData(form);
+  console.log()
   var options = {
     method: "POST",
     credentials: "same-origin",
     headers: {
-      "Content-Type": 'application/x-www-form-urlencoded',
+      "Content-Type": 'application/json',
     },
-    body: formData
+    body: JSON.stringify({
+      name: formData.get('name'),
+      tel: formData.get('tel'),
+      email: formData.get('email')
+  })
   };
-  fetch('/', options).then((response) => {
+  fetch('/send_post.php', options).then((response) => {
     intro_form.classList.add('hide');
     submit_form.classList.add('visible');
   }).catch(error => console.log(error));
 });
+

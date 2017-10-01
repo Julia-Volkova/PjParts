@@ -44,7 +44,7 @@ const paths = {
     styles: 'assets/source/styles/',
     css: 'assets/css/',
     scripts: 'assets/source/scripts/',
-    js: 'assets/js/',
+    js: '../fromserver/pjparts/assets/js/',
     templates: 'templates/',
     img: 'assets/source/img/',
     bundles: 'assets/img/',

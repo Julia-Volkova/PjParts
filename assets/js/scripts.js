@@ -164,7 +164,7 @@ form.addEventListener('submit', function (e) {
     },
     body: formData
   };
-  fetch('/', options).then(function (response) {
+  fetch('/send.php', options).then(function (response) {
     intro_form.classList.add('hide');
     submit_form.classList.add('visible');
   }).catch(function (error) {
