@@ -165,7 +165,8 @@ form.addEventListener('submit', (e) => {
     body: JSON.stringify({
       name: formData.get('name'),
       tel: formData.get('tel'),
-      email: formData.get('email')
+      email: formData.get('email'),
+      message: formData.get('message')
     })
   };
   fetch('/send_post.php', options).then((response) => {
