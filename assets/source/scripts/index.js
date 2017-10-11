@@ -1,3 +1,8 @@
+// To add to window
+if (!window.Promise) {
+  window.Promise = Promise;
+}
+
 // import test from './test.json'
 var email_input = document.querySelector('.js-email'),
   submit_input = document.querySelector('.js-submit'),
@@ -147,11 +152,10 @@ function clearResult() {
   container.innerHTML = '';
 }
 
-
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   var formData = new FormData(form);
-  console.log()
+
   var options = {
     method: "POST",
     credentials: "same-origin",
@@ -162,7 +166,7 @@ form.addEventListener('submit', (e) => {
       name: formData.get('name'),
       tel: formData.get('tel'),
       email: formData.get('email')
-  })
+    })
   };
   fetch('/send_post.php', options).then((response) => {
     intro_form.classList.add('hide');
