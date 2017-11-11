@@ -486,7 +486,7 @@ var email_input = document.querySelector('.js-email'),
   container = document.querySelector('.modal__content-result'),
   elements = [];
 
-if (document.querySelector('id')) {
+if (document.querySelector('#map')) {
 // Yandex map
   ymaps.ready(init);
 }
