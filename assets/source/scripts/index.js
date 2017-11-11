@@ -3,7 +3,7 @@ if (!window.Promise) {
   window.Promise = Promise;
 }
 
-(function(self) {
+(function (self) {
   'use strict';
 
   if (self.fetch) {
@@ -13,11 +13,11 @@ if (!window.Promise) {
   var support = {
     searchParams: 'URLSearchParams' in self,
     iterable: 'Symbol' in self && 'iterator' in Symbol,
-    blob: 'FileReader' in self && 'Blob' in self && (function() {
+    blob: 'FileReader' in self && 'Blob' in self && (function () {
       try {
         new Blob()
         return true
-      } catch(e) {
+      } catch (e) {
         return false
       }
     })(),
@@ -38,11 +38,11 @@ if (!window.Promise) {
       '[object Float64Array]'
     ]
 
-    var isDataView = function(obj) {
+    var isDataView = function (obj) {
       return obj && DataView.prototype.isPrototypeOf(obj)
     }
 
-    var isArrayBufferView = ArrayBuffer.isView || function(obj) {
+    var isArrayBufferView = ArrayBuffer.isView || function (obj) {
       return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
     }
   }
@@ -67,14 +67,14 @@ if (!window.Promise) {
   // Build a destructive iterator for the value list
   function iteratorFor(items) {
     var iterator = {
-      next: function() {
+      next: function () {
         var value = items.shift()
         return {done: value === undefined, value: value}
       }
     }
 
     if (support.iterable) {
-      iterator[Symbol.iterator] = function() {
+      iterator[Symbol.iterator] = function () {
         return iterator
       }
     }
@@ -86,45 +86,45 @@ if (!window.Promise) {
     this.map = {}
 
     if (headers instanceof Headers) {
-      headers.forEach(function(value, name) {
+      headers.forEach(function (value, name) {
         this.append(name, value)
       }, this)
     } else if (Array.isArray(headers)) {
-      headers.forEach(function(header) {
+      headers.forEach(function (header) {
         this.append(header[0], header[1])
       }, this)
     } else if (headers) {
-      Object.getOwnPropertyNames(headers).forEach(function(name) {
+      Object.getOwnPropertyNames(headers).forEach(function (name) {
         this.append(name, headers[name])
       }, this)
     }
   }
 
-  Headers.prototype.append = function(name, value) {
+  Headers.prototype.append = function (name, value) {
     name = normalizeName(name)
     value = normalizeValue(value)
     var oldValue = this.map[name]
-    this.map[name] = oldValue ? oldValue+','+value : value
+    this.map[name] = oldValue ? oldValue + ',' + value : value
   }
 
-  Headers.prototype['delete'] = function(name) {
+  Headers.prototype['delete'] = function (name) {
     delete this.map[normalizeName(name)]
   }
 
-  Headers.prototype.get = function(name) {
+  Headers.prototype.get = function (name) {
     name = normalizeName(name)
     return this.has(name) ? this.map[name] : null
   }
 
-  Headers.prototype.has = function(name) {
+  Headers.prototype.has = function (name) {
     return this.map.hasOwnProperty(normalizeName(name))
   }
 
-  Headers.prototype.set = function(name, value) {
+  Headers.prototype.set = function (name, value) {
     this.map[normalizeName(name)] = normalizeValue(value)
   }
 
-  Headers.prototype.forEach = function(callback, thisArg) {
+  Headers.prototype.forEach = function (callback, thisArg) {
     for (var name in this.map) {
       if (this.map.hasOwnProperty(name)) {
         callback.call(thisArg, this.map[name], name, this)
@@ -132,21 +132,27 @@ if (!window.Promise) {
     }
   }
 
-  Headers.prototype.keys = function() {
+  Headers.prototype.keys = function () {
     var items = []
-    this.forEach(function(value, name) { items.push(name) })
+    this.forEach(function (value, name) {
+      items.push(name)
+    })
     return iteratorFor(items)
   }
 
-  Headers.prototype.values = function() {
+  Headers.prototype.values = function () {
     var items = []
-    this.forEach(function(value) { items.push(value) })
+    this.forEach(function (value) {
+      items.push(value)
+    })
     return iteratorFor(items)
   }
 
-  Headers.prototype.entries = function() {
+  Headers.prototype.entries = function () {
     var items = []
-    this.forEach(function(value, name) { items.push([name, value]) })
+    this.forEach(function (value, name) {
+      items.push([name, value])
+    })
     return iteratorFor(items)
   }
 
@@ -162,11 +168,11 @@ if (!window.Promise) {
   }
 
   function fileReaderReady(reader) {
-    return new Promise(function(resolve, reject) {
-      reader.onload = function() {
+    return new Promise(function (resolve, reject) {
+      reader.onload = function () {
         resolve(reader.result)
       }
-      reader.onerror = function() {
+      reader.onerror = function () {
         reject(reader.error)
       }
     })
@@ -209,7 +215,7 @@ if (!window.Promise) {
   function Body() {
     this.bodyUsed = false
 
-    this._initBody = function(body) {
+    this._initBody = function (body) {
       this._bodyInit = body
       if (!body) {
         this._bodyText = ''
@@ -243,7 +249,7 @@ if (!window.Promise) {
     }
 
     if (support.blob) {
-      this.blob = function() {
+      this.blob = function () {
         var rejected = consumed(this)
         if (rejected) {
           return rejected
@@ -260,7 +266,7 @@ if (!window.Promise) {
         }
       }
 
-      this.arrayBuffer = function() {
+      this.arrayBuffer = function () {
         if (this._bodyArrayBuffer) {
           return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
         } else {
@@ -269,7 +275,7 @@ if (!window.Promise) {
       }
     }
 
-    this.text = function() {
+    this.text = function () {
       var rejected = consumed(this)
       if (rejected) {
         return rejected
@@ -287,12 +293,12 @@ if (!window.Promise) {
     }
 
     if (support.formData) {
-      this.formData = function() {
+      this.formData = function () {
         return this.text().then(decode)
       }
     }
 
-    this.json = function() {
+    this.json = function () {
       return this.text().then(JSON.parse)
     }
 
@@ -344,13 +350,13 @@ if (!window.Promise) {
     this._initBody(body)
   }
 
-  Request.prototype.clone = function() {
-    return new Request(this, { body: this._bodyInit })
+  Request.prototype.clone = function () {
+    return new Request(this, {body: this._bodyInit})
   }
 
   function decode(body) {
     var form = new FormData()
-    body.trim().split('&').forEach(function(bytes) {
+    body.trim().split('&').forEach(function (bytes) {
       if (bytes) {
         var split = bytes.split('=')
         var name = split.shift().replace(/\+/g, ' ')
@@ -363,7 +369,7 @@ if (!window.Promise) {
 
   function parseHeaders(rawHeaders) {
     var headers = new Headers()
-    rawHeaders.split(/\r?\n/).forEach(function(line) {
+    rawHeaders.split(/\r?\n/).forEach(function (line) {
       var parts = line.split(':')
       var key = parts.shift().trim()
       if (key) {
@@ -392,7 +398,7 @@ if (!window.Promise) {
 
   Body.call(Response.prototype)
 
-  Response.prototype.clone = function() {
+  Response.prototype.clone = function () {
     return new Response(this._bodyInit, {
       status: this.status,
       statusText: this.statusText,
@@ -401,7 +407,7 @@ if (!window.Promise) {
     })
   }
 
-  Response.error = function() {
+  Response.error = function () {
     var response = new Response(null, {status: 0, statusText: ''})
     response.type = 'error'
     return response
@@ -409,7 +415,7 @@ if (!window.Promise) {
 
   var redirectStatuses = [301, 302, 303, 307, 308]
 
-  Response.redirect = function(url, status) {
+  Response.redirect = function (url, status) {
     if (redirectStatuses.indexOf(status) === -1) {
       throw new RangeError('Invalid status code')
     }
@@ -421,12 +427,12 @@ if (!window.Promise) {
   self.Request = Request
   self.Response = Response
 
-  self.fetch = function(input, init) {
-    return new Promise(function(resolve, reject) {
+  self.fetch = function (input, init) {
+    return new Promise(function (resolve, reject) {
       var request = new Request(input, init)
       var xhr = new XMLHttpRequest()
 
-      xhr.onload = function() {
+      xhr.onload = function () {
         var options = {
           status: xhr.status,
           statusText: xhr.statusText,
@@ -437,11 +443,11 @@ if (!window.Promise) {
         resolve(new Response(body, options))
       }
 
-      xhr.onerror = function() {
+      xhr.onerror = function () {
         reject(new TypeError('Network request failed'))
       }
 
-      xhr.ontimeout = function() {
+      xhr.ontimeout = function () {
         reject(new TypeError('Network request failed'))
       }
 
@@ -455,7 +461,7 @@ if (!window.Promise) {
         xhr.responseType = 'blob'
       }
 
-      request.headers.forEach(function(value, name) {
+      request.headers.forEach(function (value, name) {
         xhr.setRequestHeader(name, value)
       })
 
@@ -464,7 +470,6 @@ if (!window.Promise) {
   }
   self.fetch.polyfill = true
 })(typeof self !== 'undefined' ? self : this);
-
 
 
 // import test from './test.json'
@@ -481,9 +486,10 @@ var email_input = document.querySelector('.js-email'),
   container = document.querySelector('.modal__content-result'),
   elements = [];
 
-
+if (document.querySelector('id')) {
 // Yandex map
-ymaps.ready(init);
+  ymaps.ready(init);
+}
 var myMap,
   myPlacemark;
 
@@ -506,7 +512,7 @@ function init() {
 }
 
 //Form validation
-email_input.addEventListener('keyup', () => {
+email_input && email_input.addEventListener('keyup', () => {
   var regex = /^[A-z0-9._-]+@[A-z0-9.-]+\.[A-z]{2,4}$/;
   if (regex.test(email_input.value)) {
     email_input.classList.add('valid');
@@ -520,7 +526,7 @@ email_input.addEventListener('keyup', () => {
   }
 });
 
-phone_input.addEventListener('keydown', (event) => {
+phone_input && phone_input.addEventListener('keydown', (event) => {
   if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || (event.keyCode == 65 && event.ctrlKey === true) || (event.keyCode >= 35 && event.keyCode <= 39)) {
     return;
   }
@@ -531,7 +537,7 @@ phone_input.addEventListener('keydown', (event) => {
   }
 });
 
-phone_input.addEventListener('keyup', () => {
+phone_input && phone_input.addEventListener('keyup', () => {
   var regex = /^((\+7|7|8)+([0-9]){10})$/gm;
   if (regex.test(phone_input.value)) {
     phone_input.classList.add('valid');
@@ -543,17 +549,17 @@ phone_input.addEventListener('keyup', () => {
 
 
 // Search
-search_btn.addEventListener('click', () => {
+search_btn && search_btn.addEventListener('click', () => {
   modal.classList.add('visible');
   modal.style.height = document.body.offsetHeight + 'px'; // можно удалить
 });
 
-close_modal_btn.addEventListener('click', e => {
+close_modal_btn && close_modal_btn.addEventListener('click', e => {
   e.preventDefault();
   modal.classList.remove('visible');
 });
 
-input_search.addEventListener('keyup', () => {
+input_search && input_search.addEventListener('keyup', () => {
   const value = input_search.value;
   const options = {
     method: "POST",
@@ -616,7 +622,7 @@ function clearResult() {
   container.innerHTML = '';
 }
 
-form.addEventListener('submit', (e) => {
+form && form.addEventListener('submit', (e) => {
   e.preventDefault();
   var formData = new FormData(form);
 
